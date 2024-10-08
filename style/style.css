@@ -1,7 +1,7 @@
 body {
   display: grid;
   grid-template-rows: 80px auto 100px;
-  background-color: #FFF8E8;
+  background-color: #F7EED3;
   min-height: 100vh;
   margin: 0;
   font-family: Helvetica, sans-serif;
@@ -10,6 +10,12 @@ body h1,
 body h2 {
   font-family: "Palatino Linotype", sans-serif;
 }
+body .main-link-button {
+  display: block;
+  background-color: #AAB396;
+  padding: 10px;
+  text-align: center;
+}
 body header {
   background-color: #AAB396;
   overflow: hidden;
@@ -17,7 +23,7 @@ body header {
 body header h1 {
   text-align: center;
   display: inline-block;
-  margin: 0;
+  margin: 15px;
 }
 body header nav {
   display: inline-block;
@@ -30,6 +36,11 @@ body header nav .menu-item {
   text-align: center;
   height: 100%;
   margin: 10px;
+}
+body main {
+  background-color: #FFF8E8;
+  margin: 0 10%;
+  padding: 10px;
 }
 body main section {
   display: grid;
@@ -45,11 +56,38 @@ body main section article img {
 }
 body main table {
   width: 100%;
+  text-align: center;
+  padding: 0 10%;
 }
 body main table img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+  border-radius: 5px;
+}
+body main table td,
+body main table th {
+  width: 25%;
+}
+body main form {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 50%;
+}
+body main form input[type=text],
+body main form input[type=password] {
+  display: inline-block;
+  width: 100%;
+  margin: 16px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+body main form input[type=submit] {
+  display: inline-block;
+  width: 100%;
+  margin: 16px 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 body footer {
   background-color: #674636;
