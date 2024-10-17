@@ -16,7 +16,11 @@ body {
   }
   h1, h2 {
     font-family: "Palatino Linotype", sans-serif;
-    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: darken(@secondary-green, 50%);
   }
   .main-link-button {
     display: block;
@@ -40,18 +44,33 @@ body {
       display: inline-block;
       float: right;
       height: 100%;
-      .menu-item {
-        display: inline-block;
-        padding: 14px 16px;
-        text-align: center;
+      ul {
         height: 100%;
-        margin: 10px;
-        @media only screen and (max-width: 768px) {
-          display: block;
-          margin: 0;
-          height: auto;
+        margin: 0;
+        padding: 0;
+          .menu-item {
+            display: inline-block;
+            text-align: center;
+            height: 100%;
+            //align-content: center;
+            padding: 28px 16px;
+            &:hover {
+              background-color: darken(@secondary-green, 10%);
+            }
+            @media only screen and (max-width: 768px) {
+              display: block;
+              margin: 0;
+              height: auto;
+            }
+            a {
+              height: 100%;
+              padding: 28px 16px;
+            }
+
         }
+
       }
+
       @media only screen and (max-width: 768px) {
         display: block;
         float: none;
@@ -102,8 +121,20 @@ body {
           height: 80px;
         }
       }
+      th {
+        padding: 10px;
+        background-color: darken(@secondary-green, 10%);
+      }
       td, th {
         width: 25%;
+      }
+
+      tr:nth-child(even) {
+        background-color: darken(@secondary-beige, 2%);
+      }
+
+      tr:nth-child(odd) {
+        background-color: darken(@main-color, 2%);
       }
     }
     form {

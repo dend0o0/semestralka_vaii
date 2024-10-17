@@ -14,7 +14,10 @@ body {
 body h1,
 body h2 {
   font-family: "Palatino Linotype", sans-serif;
-  text-align: center;
+}
+body a {
+  text-decoration: none;
+  color: #272b1f;
 }
 body .main-link-button {
   display: block;
@@ -38,19 +41,30 @@ body header nav {
   float: right;
   height: 100%;
 }
-body header nav .menu-item {
+body header nav ul {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body header nav ul .menu-item {
   display: inline-block;
-  padding: 14px 16px;
   text-align: center;
   height: 100%;
-  margin: 10px;
+  padding: 28px 16px;
+}
+body header nav ul .menu-item:hover {
+  background-color: #929e78;
 }
 @media only screen and (max-width: 768px) {
-  body header nav .menu-item {
+  body header nav ul .menu-item {
     display: block;
     margin: 0;
     height: auto;
   }
+}
+body header nav ul .menu-item a {
+  height: 100%;
+  padding: 28px 16px;
 }
 @media only screen and (max-width: 768px) {
   body header nav {
@@ -113,9 +127,19 @@ body main table img {
     height: 80px;
   }
 }
+body main table th {
+  padding: 10px;
+  background-color: #929e78;
+}
 body main table td,
 body main table th {
   width: 25%;
+}
+body main table tr:nth-child(even) {
+  background-color: #c3c8be;
+}
+body main table tr:nth-child(odd) {
+  background-color: #eef0ea;
 }
 body main form {
   box-sizing: border-box;
@@ -147,4 +171,3 @@ body footer {
   text-align: center;
   color: #C8CDC4;
 }
-/*# sourceMappingURL=style.css.map */
