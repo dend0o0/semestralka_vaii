@@ -52,7 +52,6 @@ body {
             display: inline-block;
             text-align: center;
             height: 100%;
-            //align-content: center;
             padding: 28px 16px;
             &:hover {
               background-color: darken(@secondary-green, 10%);
@@ -66,9 +65,7 @@ body {
               height: 100%;
               padding: 28px 16px;
             }
-
         }
-
       }
 
       @media only screen and (max-width: 768px) {
@@ -99,7 +96,7 @@ body {
         background-color: #dbdfd3;
         img {
           width: 100%;
-          height: 250px;
+          height: auto;
           object-fit: cover;
         }
       }
@@ -112,14 +109,11 @@ body {
         padding: 0;
       }
       img {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: auto;
+        max-width: 200px;
         object-fit: cover;
         border-radius: 5px;
-        @media only screen and (max-width: 767px) {
-          width: 80px;
-          height: 80px;
-        }
       }
       th {
         padding: 10px;
