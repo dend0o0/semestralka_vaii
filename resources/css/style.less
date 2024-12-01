@@ -1,0 +1,200 @@
+@main-color: #f3f4f0;//#FFF8E8;
+@secondary-green: #AAB396;
+@secondary-brown: #674636;
+@secondary-beige: #C8CDC4 ;//#F7EED3;
+@main-font: Helvetica, sans-serif;
+
+body {
+  display: grid;
+  grid-template-rows: 80px auto 100px;
+  background-color: @main-color;
+  min-height: 100vh;
+  margin: 0;
+  font-family: @main-font;
+  @media screen and (max-width: 768px) {
+    grid-template-rows: auto auto 100px;
+  }
+  h1, h2 {
+    font-family: "Palatino Linotype", sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: darken(@secondary-green, 50%);
+  }
+  .main-link-button {
+    display: block;
+    background-color: @secondary-green;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    bottom: auto;
+  }
+
+  header {
+    background-color: @secondary-green;
+    overflow: hidden;
+    h1 {
+      //text-align: center;
+      display: inline-block;
+      margin: 15px;
+      //float: left;
+        @media only screen and (max-width: 768px) {
+            font-size: 1.5em;
+        }
+    }
+      #title-wrapper {
+          display: inline-block;
+          @media only screen and (max-width: 768px) {
+              display: block;
+              width: 100%;
+              float: none;
+          }
+      }
+      #menu-button-resp {
+          display: none;
+          @media only screen and (max-width: 768px) {
+              display: block;
+              float: right;
+              padding: 10px;
+          }
+      }
+    nav {
+      display: inline-block;
+      float: right;
+      height: 100%;
+      ul {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+          .active {
+              background-color: darken(@secondary-green, 20%);
+          }
+          .menu-item {
+            display: inline-block;
+            text-align: center;
+            height: 100%;
+            padding: 28px 16px;
+            &:hover {
+              background-color: darken(@secondary-green, 15%);
+            }
+
+            @media only screen and (max-width: 768px) {
+              display: none;
+              margin: 0;
+              height: auto;
+            }
+              @media only screen and (min-width: 769px) {
+                  display: inline-block;
+              }
+
+            a {
+              height: 100%;
+              padding: 28px 16px;
+            }
+
+        }
+          .menu-item-hidden {
+              display: block;
+          }
+      }
+
+      @media only screen and (max-width: 768px) {
+        display: block;
+        float: none;
+      }
+    }
+
+  }
+  main {
+      min-height: 90vh;
+    background-color: @main-color;
+    margin: 0 10%;
+    padding: 10px;
+    @media only screen and (max-width: 767px) {
+      margin: 0;
+    }
+    section#articles {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      @media only screen and  (max-width: 1023px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media only screen and (max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+      article {
+        margin: 10px;
+        background-color: #dbdfd3;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+    }
+    table {
+      width: 100%;
+      text-align: center;
+      padding: 0 10%;
+      @media only screen and (max-width: 767px) {
+        padding: 0;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      th {
+        padding: 10px;
+        background-color: darken(@secondary-green, 10%);
+      }
+      td, th {
+        width: 25%;
+      }
+
+      tr:nth-child(even) {
+        background-color: darken(@secondary-beige, 2%);
+      }
+
+      tr:nth-child(odd) {
+        background-color: darken(@main-color, 2%);
+      }
+    }
+    form {
+      box-sizing: border-box;
+      margin: 0 auto;
+      width: 50%;
+      input[type=text], input[type=password] {
+        display: inline-block;
+        width: 100%;
+        margin: 16px 0;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      input[type=submit] {
+        display: inline-block;
+        width: 100%;
+        margin: 16px 0;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+    section#articleGallery {
+      div#articleGalleryContainer {
+        img {
+          width: 250px;
+          height: 250px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  footer {
+    background-color: @secondary-brown;
+    text-align: center;
+    color: @secondary-beige;
+  }
+}
