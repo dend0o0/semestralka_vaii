@@ -2,10 +2,10 @@
 <x-layout>
     <h2>{{ $rastlina->nazov }} </h2>
     <a href="{{ $rastlina->id }}/upravit">Upraviť</a>
-    <p><strong>Latinský názov: </strong>{{ $rastlina->lat_nazov }}</p>
-    <p><strong>Kategória: </strong>{{ $rastlina->category->name_category }}</p>
-    <p><strong>Vhodná teplota: </strong>{{ $rastlina->min_teplota }}°C až {{ $rastlina->max_teplota }}°C</p>
 
+    <p><strong>Latinský názov: </strong>{{ $rastlina->lat_nazov }}</p>
+    <p><strong>Kategória: </strong> {{ $rastlina->category->name_category }}</p>
+    <p><strong>Vhodná teplota: </strong>{{ $rastlina->min_teplota }}°C až {{ $rastlina->max_teplota }}°C</p>
 
     <p>{{ $rastlina->obsah }}</p>
 
