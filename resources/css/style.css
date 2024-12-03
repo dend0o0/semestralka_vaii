@@ -35,7 +35,7 @@ body header h1 {
   display: inline-block;
   margin: 15px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1060px) {
   body header h1 {
     font-size: 1.5em;
   }
@@ -43,7 +43,7 @@ body header h1 {
 body header #title-wrapper {
   display: inline-block;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1060px) {
   body header #title-wrapper {
     display: block;
     width: 100%;
@@ -53,7 +53,7 @@ body header #title-wrapper {
 body header #menu-button-resp {
   display: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1060px) {
   body header #menu-button-resp {
     display: block;
     float: right;
@@ -82,26 +82,31 @@ body header nav ul .menu-item {
 body header nav ul .menu-item:hover {
   background-color: #86926a;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 1059px) {
+  body header nav ul .menu-item {
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 1060px) {
   body header nav ul .menu-item {
     display: none;
     margin: 0;
     height: auto;
   }
 }
-@media only screen and (min-width: 769px) {
-  body header nav ul .menu-item {
-    display: inline-block;
-  }
-}
 body header nav ul .menu-item a {
   height: 100%;
   padding: 28px 16px;
 }
-body header nav ul .menu-item-hidden {
+body header nav ul .menu-item-shown {
   display: block;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 1060px) {
+  body header nav ul .menu-item-shown {
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 1059px) {
   body header nav {
     display: block;
     float: none;
@@ -178,12 +183,32 @@ body main form {
   width: 50%;
 }
 body main form input[type=text],
-body main form input[type=password] {
+body main form input[type=password],
+body main form input[type=number],
+body main form select,
+body main form textarea {
   display: inline-block;
   width: 100%;
   margin: 16px 0;
   padding: 10px;
   box-sizing: border-box;
+}
+body main form input[type=number] {
+  width: 100px;
+}
+body main form #form-teplota-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+body main form #form-teplota-wrapper label {
+  flex: 1 1;
+  gap: 10px;
+  justify-content: space-between;
+}
+body main form textarea {
+  resize: vertical;
+  font-family: Helvetica, sans-serif;
 }
 body main form input[type=submit] {
   display: inline-block;
@@ -191,6 +216,17 @@ body main form input[type=submit] {
   margin: 16px 0;
   padding: 10px;
   box-sizing: border-box;
+  border: 2px solid #78845f;
+  color: #424934;
+}
+body main form .button-delete {
+  display: inline-block;
+  width: 100%;
+  margin: 16px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid darkred;
+  color: darkred;
 }
 body main section#articleGallery div#articleGalleryContainer img {
   width: 250px;

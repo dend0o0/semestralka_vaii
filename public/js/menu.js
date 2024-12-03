@@ -13,7 +13,7 @@ function menuShowHide() {
     //menuButton.className.toggle("fa-solid fa-bars");
     for (let i = 0; i < menuClick.length; i++) {
 
-        menuClick[i].classList.toggle("menu-item-hidden");
+        menuClick[i].classList.toggle("menu-item-shown");
 
     }
 }

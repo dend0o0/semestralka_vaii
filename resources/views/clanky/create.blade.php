@@ -23,13 +23,18 @@
             @endforeach
 
         </select><br>
-        <label>Minimálna teplota:</label>
-        <input type="number" name="minTeplota">
-        <label>Maximálna teplota</label>
-        <input type="number" name="maxTeplota">
+        <div id="form-teplota-wrapper">
+            <label for="minTeplota">Minimálna teplota:
+            <input type="number" name="minTeplota">
+            </label>
+            <label for="maxTeplota">Maximálna teplota:
+            <input type="number" name="maxTeplota">
+            </label>
+        </div>
+
         <br>
         <label>Obsah článku:</label><br>
-        <textarea name="obsahClanku" id="obsahClanku">Začnite písať článok</textarea><br>
+        <textarea name="obsahClanku" id="obsahClanku" placeholder="Vaše poznatky k rastline..."></textarea><br>
 
 
 

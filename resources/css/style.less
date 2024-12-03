@@ -39,13 +39,13 @@ body {
       display: inline-block;
       margin: 15px;
       //float: left;
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 1060px) {
             font-size: 1.5em;
         }
     }
       #title-wrapper {
           display: inline-block;
-          @media only screen and (max-width: 768px) {
+          @media only screen and (max-width: 1060px) {
               display: block;
               width: 100%;
               float: none;
@@ -53,7 +53,7 @@ body {
       }
       #menu-button-resp {
           display: none;
-          @media only screen and (max-width: 768px) {
+          @media only screen and (max-width: 1060px) {
               display: block;
               float: right;
               padding: 10px;
@@ -78,15 +78,15 @@ body {
             &:hover {
               background-color: darken(@secondary-green, 15%);
             }
-
-            @media only screen and (max-width: 768px) {
+              @media only screen and (min-width: 1059px) {
+                  display: inline-block;
+              }
+            @media only screen and (max-width: 1060px) {
               display: none;
               margin: 0;
               height: auto;
             }
-              @media only screen and (min-width: 769px) {
-                  display: inline-block;
-              }
+
 
             a {
               height: 100%;
@@ -94,12 +94,15 @@ body {
             }
 
         }
-          .menu-item-hidden {
+          .menu-item-shown {
               display: block;
+              @media only screen and (min-width: 1060px) {
+                  display: inline-block;
+              }
           }
       }
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 1059px) {
         display: block;
         float: none;
       }
@@ -167,20 +170,53 @@ body {
       box-sizing: border-box;
       margin: 0 auto;
       width: 50%;
-      input[type=text], input[type=password] {
+      input[type=text], input[type=password], input[type=number], select, textarea {
         display: inline-block;
         width: 100%;
         margin: 16px 0;
         padding: 10px;
         box-sizing: border-box;
       }
+        input[type=number] {
+            width: 100px;
+        }
+
+        #form-teplota-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        #form-teplota-wrapper label {
+            flex: 1 1;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        textarea {
+            resize: vertical;
+            font-family: @main-font;
+        }
       input[type=submit] {
         display: inline-block;
         width: 100%;
         margin: 16px 0;
         padding: 10px;
         box-sizing: border-box;
+          border: 2px solid darken(@secondary-green, 20%);
+          color: darken(@secondary-green, 40%);
+          //background-color: @secondary-green;
       }
+
+        .button-delete {
+            display: inline-block;
+            width: 100%;
+            margin: 16px 0;
+            padding: 10px;
+            box-sizing: border-box;
+            //background-color: indianred;
+            border: 2px solid darkred;
+            color: darkred;
+        }
     }
     section#articleGallery {
       div#articleGalleryContainer {

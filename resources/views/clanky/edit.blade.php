@@ -3,11 +3,7 @@
     @if($errors->any())
         <p>Údaje nie sú správne vyplnené</p>
     @endif
-    <form method="POST" action="/clanok/{{ $rastlina->id }}">
-        @csrf
-        @method('DELETE')
-        <button>Odstrániť</button>
-    </form>
+
     <form method="post" action="/clanok/{{ $rastlina->id }}">
         @csrf
         @method('PATCH')
@@ -35,11 +31,22 @@
 
         </select><br>
         <br>
-        <label>Minimálna teplota:</label>
-        <input type="number" name="minTeplota" value="{{ $rastlina->min_teplota }}">
-        <label>Maximálna teplota</label>
-        <input type="number" name="maxTeplota" value="{{ $rastlina->max_teplota }}">
+        <div id="form-teplota-wrapper">
+            <label for="minTeplota">Minimálna teplota:
+                <input type="number" name="minTeplota" value="{{ $rastlina->min_teplota }}">
+            </label>
+            <label for="maxTeplota">Maximálna teplota:
+                <input type="number" name="maxTeplota" value="{{ $rastlina->max_teplota }}">
+            </label>
+        </div>
         <br>
         <input type="submit">
+    </form>
+    <h3>Odstrániť článok</h3>
+    <p>Pozor! Táto akcia je nenávratná!</p>
+    <form method="POST" action="/clanok/{{ $rastlina->id }}">
+        @csrf
+        @method('DELETE')
+        <button class="button-delete">Odstrániť</button>
     </form>
 </x-layout>

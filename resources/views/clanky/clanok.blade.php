@@ -13,8 +13,8 @@
         <h2>Galéria</h2>
         <div id="articleGalleryContainer">
             <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
-            <img src="img/zelenec_2.png" alt="Zelenec chocholatý">
-            <img src="img/zelenec_2.png" alt="Zelenec chocholatý">
+            <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
+            <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
         </div>
     </section>
     <section id="articleComments">
