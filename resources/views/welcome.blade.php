@@ -7,7 +7,7 @@
     <section id="articles">
         @foreach($rastliny as $rastlina)
             <article>
-                <img src="img/zelenec-chocholaty.jpg" alt="{{ $rastlina->nazov }}">
+                <img src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="{{ $rastlina->nazov }}">
                 <h2>{{ $rastlina->nazov }}</h2>
                 <a href="clanok/{{ $rastlina->id }}" class="main-link-button">Zobraziť viac</a>
             </article>

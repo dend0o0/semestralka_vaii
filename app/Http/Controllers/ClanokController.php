@@ -33,7 +33,11 @@ class ClanokController extends Controller
             'nazovClanku' => ['required', 'min:3', 'max:255'],
             'obsahClanku' => ['required', 'min:3', 'max:2000'],
             'kategoria' => ['required', 'string', 'max:255'],
+            'obrayok' => ['nullable', 'image']
         ]);
+        if (request()->hasFile('image')) {
+            $obrazok = request()->file('image')->store('img', 'public');
+        }
 
         Clanok::create([
             'nazov' => request('nazovClanku'),
@@ -44,7 +48,7 @@ class ClanokController extends Controller
             'min_teplota' => request('minTeplota'),
             'max_teplota' => request('maxTeplota'),
             'kvitnuca' => 0,
-            'obrazok' => 'figovnik-kaucukovy.jpg'
+            'obrazok' => $obrazok
         ]);
         return redirect('/');
     }

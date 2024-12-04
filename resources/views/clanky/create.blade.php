@@ -8,7 +8,7 @@
         <p>Údaje nie sú správne vyplnené</p>
     @endif
     <div id="errorForm"></div>
-    <form id="edit-create-form" method="post" action="/clanky">
+    <form id="edit-create-form" method="post" action="/clanky" enctype="multipart/form-data">
     @csrf
 
         <label>Názov rastliny:<br></label>
@@ -31,7 +31,7 @@
             <input type="number" name="maxTeplota">
             </label>
         </div>
-
+        <input type="file" name="image">
         <br>
         <label>Obsah článku:</label><br>
         <textarea name="obsahClanku" id="obsahClanku" placeholder="Vaše poznatky k rastline..."></textarea><br>

@@ -12,9 +12,7 @@
     <section id="articleGallery">
         <h2>Galéria</h2>
         <div id="articleGalleryContainer">
-            <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
-            <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
-            <img src="{{ asset('img/zelenec_2.png') }}" alt="Zelenec chocholatý">
+            <img src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="Titulný obrázok">
         </div>
     </section>
     <section id="articleComments">
