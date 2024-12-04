@@ -19,7 +19,7 @@
 
     <nav>
         <ul>
-            <li class="menu-item {{ request()->is('/') ? 'active' : ''}}"><a href="/" >Domovček</a></li>
+            <li class="menu-item {{ request()->is('/') ? 'active' : ''}}"><a href="/" >Domov</a></li>
             <li class="menu-item {{ request()->is('list') ? 'active' : ''}}"><a href="/list" >Zoznam rastlín</a></li>
             <li class="menu-item {{ request()->is('login') ? 'active' : ''}}"><a href="/login" >Prihlásiť sa</a></li>
             <li class="menu-item {{ request()->is('login') ? 'active' : ''}}"><a href="/clanok/novy" >Pridať rastlinu</a></li>

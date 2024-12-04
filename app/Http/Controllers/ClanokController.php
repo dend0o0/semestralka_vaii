@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Clanok;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClanokController extends Controller
 {
@@ -29,15 +30,19 @@ class ClanokController extends Controller
         return view('clanky.create', ['kategorie' => $kategoria]);
     }
     public function store() {
+        if (request()->hasFile('image')) {
+            $obrazok = request()->file('image')->store('img', 'public');
+        }
         request()->validate([
             'nazovClanku' => ['required', 'min:3', 'max:255'],
             'obsahClanku' => ['required', 'min:3', 'max:2000'],
             'kategoria' => ['required', 'string', 'max:255'],
-            'obrayok' => ['nullable', 'image']
+            'image' => ['required', 'image'],
+            'minTeplota' => ['required', 'numeric', 'min:-50', 'max:30' ],
+            'maxTeplota' => ['required', 'numeric', 'min:0', 'max:60' ],
+            'nazovLat' => ['required', 'min:3', 'max:255']
         ]);
-        if (request()->hasFile('image')) {
-            $obrazok = request()->file('image')->store('img', 'public');
-        }
+
 
         Clanok::create([
             'nazov' => request('nazovClanku'),
@@ -47,7 +52,7 @@ class ClanokController extends Controller
             'lat_nazov' => request('nazovLat'),
             'min_teplota' => request('minTeplota'),
             'max_teplota' => request('maxTeplota'),
-            'kvitnuca' => 0,
+            'kvitnuca' => request('kvitnuca') == 1 ? 1 : 0,
             'obrazok' => $obrazok
         ]);
         return redirect('/');
@@ -62,8 +67,11 @@ class ClanokController extends Controller
     public function update(Clanok $clanok) {
         request()->validate([
             'nazovClanku' => ['required', 'min:3', 'max:255'],
+            'nazovLat' => ['required', 'min:3', 'max:255'],
             'obsahClanku' => ['required', 'min:3', 'max:2000'],
             'kategoria' => ['required', 'max:255'],
+            'minTeplota' => ['required', 'numeric', 'min:-50', 'max:30' ],
+            'maxTeplota' => ['required', 'numeric', 'min:0', 'max:60' ]
         ]);
 
         $clanok->nazov = request('nazovClanku');
@@ -72,11 +80,13 @@ class ClanokController extends Controller
         $clanok->lat_nazov = request('nazovLat');
         $clanok->min_teplota = request('minTeplota');
         $clanok->max_teplota = request('maxTeplota');
+        $clanok->kvitnuca = request('kvitnuca') == 1 ? 1 : 0;
         $clanok->save();
 
         return redirect('/clanok/' . $clanok->id);
     }
     public function destroy(Clanok $clanok) {
+        Storage::disk('public')->delete($clanok->obrazok);
         $clanok->delete();
         return redirect('/list');
     }

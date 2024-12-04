@@ -1,7 +1,10 @@
 
 <x-layout>
-    <h2>{{ $rastlina->nazov }} </h2>
-    <a href="{{ $rastlina->id }}/upravit">Upraviť</a>
+    <div id="clanok-header">
+        <h2>{{ $rastlina->nazov }} </h2>
+        <a href="{{ $rastlina->id }}/upravit">Upraviť</a>
+    </div>
+
 
     <p><strong>Latinský názov: </strong>{{ $rastlina->lat_nazov }}</p>
     <p><strong>Kategória: </strong> {{ $rastlina->category->name_category }}</p>

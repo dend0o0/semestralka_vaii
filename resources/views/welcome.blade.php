@@ -1,5 +1,5 @@
 <x-layout>
-    <h1>Vitajte v databáze zelených rastlín!!!</h1>
+    <h1>Vitajte v databáze zelených rastlín!</h1>
     <p>Na tejto stránke je možné nájsť základné informácie o rôznych zelených rastlinách rozdelených do kategórií. Do tejto databázy môže prispievať každý registrovaný užívateľ. </p>
     <a href="#" class="main-link-button">Prejsť na zoznam rastlín</a>
     <h1>Posledne pridané články</h1>

@@ -5,10 +5,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Clanok;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', [ClanokController::class, 'indexHomepage']);
+
 
 Route::get('/login', function () {
     return view('login');

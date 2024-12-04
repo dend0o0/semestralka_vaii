@@ -3,8 +3,8 @@
     @if($errors->any())
         <p>Údaje nie sú správne vyplnené</p>
     @endif
-
-    <form method="post" action="/clanok/{{ $rastlina->id }}">
+    <div id="errorForm"></div>
+    <form id="edit-create-form" method="post" action="/clanok/{{ $rastlina->id }}">
         @csrf
         @method('PATCH')
         <label>Názov kvetu:<br></label>
@@ -38,7 +38,9 @@
             <label for="maxTeplota">Maximálna teplota:
                 <input type="number" name="maxTeplota" value="{{ $rastlina->max_teplota }}">
             </label>
-        </div>
+        </div><br>
+        <input type="checkbox" id="kvitnuca-checkbox" name="kvitnuca" value="1" {{ $rastlina->kvitnuca == 1 ? 'checked' : '' }}>
+        <label for="kvitnuca-checkbox">Je rastlina kvitnúca?</label><br><br>
         <br>
         <input type="submit">
     </form>
@@ -49,4 +51,5 @@
         @method('DELETE')
         <button class="button-delete">Odstrániť</button>
     </form>
+    <script src="{{ asset('js/validation.js') }}"></script>
 </x-layout>

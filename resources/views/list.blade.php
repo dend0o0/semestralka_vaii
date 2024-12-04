@@ -11,7 +11,7 @@
         </tr>
         @foreach($rastliny as $rastlina)
             <tr>
-                <td><img src="img/{{ $rastlina['obrazok'] }}" alt="Zelenec chocholatý"></td>
+                <td><img src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="Titulná fotka"></td>
                 <td>{{ $rastlina['nazov'] }}</td>
 
                 <td>{{ $rastlina->category->name_category }}</td>

@@ -31,8 +31,10 @@
             <input type="number" name="maxTeplota">
             </label>
         </div>
+        <input type="checkbox" id="kvitnuca-checkbox" name="kvitnuca" value="1">
+        <label for="kvitnuca-checkbox">Je rastlina kvitnúca?</label><br><br>
         <input type="file" name="image">
-        <br>
+        <br><br>
         <label>Obsah článku:</label><br>
         <textarea name="obsahClanku" id="obsahClanku" placeholder="Vaše poznatky k rastline..."></textarea><br>
 
