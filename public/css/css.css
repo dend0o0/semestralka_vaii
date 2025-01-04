@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-family: Helvetica, sans-serif;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1060px) {
   body {
     grid-template-rows: auto auto 100px;
   }

@@ -6,14 +6,15 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Clanok;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
+use \App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\LoginController;
 
 
 Route::get('/', [ClanokController::class, 'indexHomepage']);
 
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/clanok/novy', [ClanokController::class, 'create']);
 
@@ -27,6 +28,13 @@ Route::patch('/clanok/{clanok}', [ClanokController::class, 'update']);
 
 Route::delete('/clanok/{clanok}', [ClanokController::class, 'destroy']);
 
+Route::get('/register', [RegistrationController::class, 'create']);
+
+Route::post('/register', [RegistrationController::class, 'store']);
+
 Route::get('/list', [ClanokController::class, 'index']);
+
+Route::post('/logout', [LoginController::class, 'destroy']);
+Route::post('/clanok/{clanok}/comment', [ClanokController::class, 'storeComment']);
 
 

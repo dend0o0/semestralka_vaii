@@ -1,10 +1,11 @@
 <x-layout>
     <h2>Prihlásenie užívateľa</h2>
-    <form>
+    <form method="post" action="/login">
+        @csrf
 
         <label>
             Prihlasovacie meno:<br>
-            <input type="text" name="username"><br>
+            <input type="email" name="email"><br>
         </label>
         <label>
             Heslo:<br>

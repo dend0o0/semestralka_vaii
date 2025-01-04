@@ -14,6 +14,11 @@ class User extends Authenticatable
     public function clanok() {
         return $this->hasMany(Clanok::class);
     }
+
+    public function comment() {
+        return $this->hasMany(Comment::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,7 +27,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password'
     ];
 
     /**

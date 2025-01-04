@@ -21,8 +21,20 @@
         <ul>
             <li class="menu-item {{ request()->is('/') ? 'active' : ''}}"><a href="/" >Domov</a></li>
             <li class="menu-item {{ request()->is('list') ? 'active' : ''}}"><a href="/list" >Zoznam rastlín</a></li>
+            @guest
             <li class="menu-item {{ request()->is('login') ? 'active' : ''}}"><a href="/login" >Prihlásiť sa</a></li>
-            <li class="menu-item {{ request()->is('login') ? 'active' : ''}}"><a href="/clanok/novy" >Pridať rastlinu</a></li>
+            @endguest
+            @auth
+            <li class="menu-item {{ request()->is('clanok/novy') ? 'active' : ''}}"><a href="/clanok/novy" >Pridať rastlinu</a></li>
+            <li class="menu-item">
+
+                <form method="post" action="/logout">
+                    @csrf
+                    <input type="submit" value="Odhlásiť">
+                </form>
+            </li>
+
+            @endauth
         </ul>
     </nav>
 </header>

@@ -20,6 +20,14 @@
     </section>
     <section id="articleComments">
         <h2>Komentáre</h2>
-        <p>Aktuálne žiadne komentáre</p>
+        @foreach($comments as $comment)
+            <p>{{ $comment->obsah }}</p>
+        @endforeach
+
+        <form method="post" action="{{ '/clanok/' . $rastlina->id . '/comment' }}">
+            @csrf
+            <textarea name="obsah" placeholder="Váš komentár..."></textarea><br>
+            <input type="submit">
+        </form>
     </section>
 </x-layout>

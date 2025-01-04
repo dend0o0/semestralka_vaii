@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Clanok;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ClanokController extends Controller
@@ -57,8 +59,19 @@ class ClanokController extends Controller
         ]);
         return redirect('/');
     }
+
+    public function storeComment(Clanok $clanok) {
+        Comment::create([
+            'obsah' => request('obsah'),
+            'clanok_id' => $clanok->id,
+            'user_id' => Auth::id()
+        ]);
+        return redirect('/');
+    }
+
     public function show(Clanok $clanok) {
-        return view('clanky.clanok', ['rastlina' => $clanok]);
+        $comments = $clanok->comment;
+        return view('clanky.clanok', ['rastlina' => $clanok, 'comments' => $comments]);
     }
     public function edit(Clanok $clanok) {
         $kategoria = Category::all();
