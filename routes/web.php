@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClanokController;
+use App\Http\Controllers\GalleryImageController;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Clanok;
@@ -35,6 +36,19 @@ Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/list', [ClanokController::class, 'index']);
 
 Route::post('/logout', [LoginController::class, 'destroy']);
+
 Route::post('/clanok/{clanok}/comment', [ClanokController::class, 'storeComment']);
+
+Route::get('/clanok/{clanok}/upload', [GalleryImageController::class, 'show']);
+
+Route::post('/clanok/{clanok}/upload', [GalleryImageController::class, 'store']);
+
+Route::delete('/clanok/{clanok}/upload/{img}', [GalleryImageController::class, 'destroy']);
+
+Route::get('/clanok/{clanok}/{img}/upravit', [GalleryImageController::class, 'edit']);
+
+Route::patch('/clanok/{clanok}/{img}', [GalleryImageController::class, 'update']);
+
+
 
 

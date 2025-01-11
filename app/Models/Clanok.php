@@ -22,4 +22,8 @@ class Clanok extends Model
     public function comment() {
         return $this->hasMany(Comment::class);
     }
+
+    public function image() {
+        return $this->hasMany(GalleryImage::class);
+    }
 }

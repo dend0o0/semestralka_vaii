@@ -1,4 +1,5 @@
 <x-layout>
+    @auth
     <h2>Upraviť článok</h2>
     @if($errors->any())
         <p>Údaje nie sú správne vyplnené</p>
@@ -52,4 +53,5 @@
         <button class="button-delete">Odstrániť</button>
     </form>
     <script src="{{ asset('js/validation.js') }}"></script>
+    @endauth
 </x-layout>

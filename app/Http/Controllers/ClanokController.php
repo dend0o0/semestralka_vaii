@@ -61,17 +61,22 @@ class ClanokController extends Controller
     }
 
     public function storeComment(Clanok $clanok) {
-        Comment::create([
+        $comment = Comment::create([
             'obsah' => request('obsah'),
             'clanok_id' => $clanok->id,
             'user_id' => Auth::id()
         ]);
-        return redirect('/');
+        return response()->json([
+            'user' => Auth::user()->name,
+            'created_at' => $comment->created_at->format('Y-m-d H:i:s'),
+            'obsah' => $comment->obsah
+        ]);
     }
 
     public function show(Clanok $clanok) {
         $comments = $clanok->comment;
-        return view('clanky.clanok', ['rastlina' => $clanok, 'comments' => $comments]);
+        $images = $clanok->image;
+        return view('clanky.clanok', ['rastlina' => $clanok, 'comments' => $comments, 'images' => $images]);
     }
     public function edit(Clanok $clanok) {
         $kategoria = Category::all();

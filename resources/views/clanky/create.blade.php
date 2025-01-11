@@ -1,6 +1,7 @@
 <x-layout>
 
     <h2>Vytvoriť nový článok</h2>
+    @auth
     @if($errors->any())
         @foreach($errors->all() as $err)
             <p>{{ $err }}</p>
@@ -44,4 +45,5 @@
         <input type="submit">
     </form>
     <script src="{{ asset('js/validation.js') }}"></script>
+    @endauth
 </x-layout>

@@ -98,6 +98,10 @@ body header nav ul .menu-item a {
   height: 100%;
   padding: 28px 16px;
 }
+body header nav ul .menu-item input[type=submit] {
+  border: none;
+  background: transparent;
+}
 body header nav ul .menu-item-shown {
   display: block;
 }
@@ -185,6 +189,7 @@ body main form {
 body main form input[type=text],
 body main form input[type=password],
 body main form input[type=number],
+body main form input[type=email],
 body main form select,
 body main form textarea {
   display: inline-block;
@@ -228,10 +233,35 @@ body main form .button-delete {
   border: 2px solid darkred;
   color: darkred;
 }
+body main section#articleGallery div#articleGalleryContainer div.imageContainer {
+  display: inline;
+}
 body main section#articleGallery div#articleGalleryContainer img {
   width: 250px;
   height: 250px;
   object-fit: cover;
+}
+body main section#articleGallery div#articleGalleryContainer .fullscreen {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+body main section#articleGallery div#articleGalleryContainer .fullscreen img {
+  width: 50%;
+  max-height: 70%;
+  height: auto;
+  object-fit: contain;
+}
+body main section#articleGallery div#articleGalleryContainer .fullscreen p {
+  color: whitesmoke;
 }
 body footer {
   background-color: #674636;
