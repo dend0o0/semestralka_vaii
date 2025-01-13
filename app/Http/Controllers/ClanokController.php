@@ -12,14 +12,23 @@ use Illuminate\Support\Facades\Storage;
 
 class ClanokController extends Controller
 {
-    public function index() {
-        $clanky = Clanok::with('user')->latest()->simplePaginate(5);
+    public function index(Request $request) {
+        $clanky = Clanok::where('category_id', 1)->latest()->get();
         $kategorie = Category::all();
-        return view('list', [
+        return view('list.list', [
 
             'rastliny' => $clanky,
             'kategoria' => $kategorie
         ]);
+    }
+
+    public function filter(Category $category)
+    {
+        $rastliny = Clanok::where('category_id', $category->id)->latest()->simplePaginate(10);
+        $kategoria = Category::all();
+
+
+        return view('list.table-content', ['rastliny' => $rastliny, 'kategoria' => $kategoria]);
     }
 
     public function indexHomepage() {
@@ -28,6 +37,9 @@ class ClanokController extends Controller
     }
 
     public function create() {
+        if (Auth::guest()) {
+            return redirect('/');
+        }
         $kategoria = Category::all();
         return view('clanky.create', ['kategorie' => $kategoria]);
     }
@@ -50,7 +62,7 @@ class ClanokController extends Controller
             'nazov' => request('nazovClanku'),
             'obsah' => request('obsahClanku'),
             'category_id' => request('kategoria'),
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'lat_nazov' => request('nazovLat'),
             'min_teplota' => request('minTeplota'),
             'max_teplota' => request('maxTeplota'),
@@ -60,25 +72,15 @@ class ClanokController extends Controller
         return redirect('/');
     }
 
-    public function storeComment(Clanok $clanok) {
-        $comment = Comment::create([
-            'obsah' => request('obsah'),
-            'clanok_id' => $clanok->id,
-            'user_id' => Auth::id()
-        ]);
-        return response()->json([
-            'user' => Auth::user()->name,
-            'created_at' => $comment->created_at->format('Y-m-d H:i:s'),
-            'obsah' => $comment->obsah
-        ]);
-    }
-
     public function show(Clanok $clanok) {
-        $comments = $clanok->comment;
+        $comments = $clanok->comment()->latest()->get();
         $images = $clanok->image;
         return view('clanky.clanok', ['rastlina' => $clanok, 'comments' => $comments, 'images' => $images]);
     }
     public function edit(Clanok $clanok) {
+        if (auth()->guest() || $clanok->user->id != Auth::id()) {
+            return redirect('/');
+        }
         $kategoria = Category::all();
         return view('clanky.edit', ['rastlina' => $clanok,  'kategorie' => $kategoria]);
     }

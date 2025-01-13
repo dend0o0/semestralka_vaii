@@ -23,5 +23,5 @@
 
         <input type="submit">
     </form>
-    <!--<script src="{{ asset('js/validation.js') }}"></script>-->
+    <script src="{{ asset('js/validation_gallery.js') }}"></script>
 </x-layout>

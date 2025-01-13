@@ -1,7 +1,11 @@
- $(document).ready(function() {
+
+
+$(document).ready(function() {
     $('#commentForm').on('submit', function(event) {
         event.preventDefault();
 
+        let currentUrl = window.location.pathname;
+        let clanokId = currentUrl.split('/')[2];
         let formData = {
             obsah: $('#commentObsah').val()
         };
@@ -13,7 +17,7 @@
         });
 
         $.ajax({
-            url: '/clanok/1/comment',
+            url: `/clanok/${clanokId}/comment`,
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -22,10 +26,9 @@
             success: function(response) {
                 $('#commentsList').append(`
                         <div class="comment">
-                            <p>${response.user}</p>
-                            <p>${response.created_at}</p>
-                            <p>${response.obsah}</p>
-                        </div>
+                <p><strong>${response.user}</strong> [${response.created_at}]</p>
+                <p>${response.obsah}</p>
+            </div>
                     `);
 
                 $('#commentObsah').val('');

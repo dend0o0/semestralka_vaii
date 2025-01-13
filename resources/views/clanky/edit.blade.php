@@ -45,6 +45,13 @@
         <br>
         <input type="submit">
     </form>
+
+    <h3>Pridať obrázok k článku</h3>
+    <p>K článku je možné nahrať viac obrázkov do galérie.</p>
+        <form method="GET" action="/clanok/{{ $rastlina->id }}/upload">
+            <input type="submit" value="Vložiť obrázok">
+        </form>
+
     <h3>Odstrániť článok</h3>
     <p>Pozor! Táto akcia je nenávratná!</p>
     <form method="POST" action="/clanok/{{ $rastlina->id }}">

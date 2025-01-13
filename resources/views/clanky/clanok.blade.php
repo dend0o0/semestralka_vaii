@@ -2,10 +2,14 @@
 <x-layout>
     <div id="clanok-header">
         <h2>{{ $rastlina->nazov }} </h2>
-        <a href="{{ $rastlina->id }}/upravit">Upraviť</a>
+        @auth
+            @if($rastlina->user->id == Auth::id())
+                <a href="/clanok/{{ $rastlina->id }}/upravit">[Upraviť článok]</a>
+            @endif
+        @endauth
     </div>
 
-
+    <p>Vytvorené používateľom <strong>{{ $rastlina->user->name }}</strong></p>
     <p><strong>Latinský názov: </strong>{{ $rastlina->lat_nazov }}</p>
     <p><strong>Kategória: </strong> {{ $rastlina->category->name_category }}</p>
     <p><strong>Vhodná teplota: </strong>{{ $rastlina->min_teplota }}°C až {{ $rastlina->max_teplota }}°C</p>
@@ -15,19 +19,34 @@
     <section id="articleGallery">
         <h2>Galéria</h2>
         <div id="articleGalleryContainer">
-            <img src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="Titulný obrázok">
+            <div class="imageContainer" id="image-{{ $rastlina->obrazok }}">
+            <img class="galleryImage" src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="Titulný obrázok">
+            <div class="fullscreen" id="fullscreen-{{ $rastlina->obrazok }}">
+                <img src="{{ asset('storage/' . $rastlina->obrazok) }}" alt="Titulný obrázok">
+                <p>Titulný obrázok</p>
+            </div>
+            </div>
             @foreach($images as $image)
                 <div class="imageContainer" id="image-{{ $image->id }}">
                     <img class="galleryImage" src="{{ asset('storage/' . $image->img) }}" alt="{{ $image->description }}">
                     <div class="fullscreen" id="fullscreen-{{ $image->id }}">
                         <img src="{{ asset('storage/' . $image->img) }}" alt="{{ $image->description }}">
                         <p>{{ $image->name }} - {{ $image->description }}</p>
-                        <form method="POST" class="deleteImageForm" action="/clanok/{{ $rastlina->id }}/upload/{{ $image->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Odstrániť</button>
-                        </form>
-                        <p><a href="/clanok/{{ $rastlina->id }}/{{ $image->id }}/upravit">Upraviť</a></p>
+                        @auth
+                            @if(Auth::id() == $rastlina->user->id)
+                                <div id="fullscreenButtonContainer">
+                                    <form method="POST" class="deleteImageForm" action="/clanok/{{ $rastlina->id }}/upload/{{ $image->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Odstrániť</button>
+                                    </form>
+                                    <form method="GET" action="/clanok/{{ $rastlina->id }}/{{ $image->id }}/upravit">
+                                        <button type="submit">Upraviť</button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
+
                     </div>
 
                 </div>
@@ -39,8 +58,7 @@
         <div id="commentsList">
         @foreach($comments as $comment)
             <div class="comment">
-                <p>{{ $comment->user->name }}</p>
-                <p>{{ $comment->created_at }}</p>
+                <p><strong>{{ $comment->user->name }}</strong> [{{ $comment->created_at }}]</p>
                 <p>{{ $comment->obsah }}</p>
             </div>
 
@@ -57,4 +75,5 @@
     <script src="{{ asset('js/comments_ajax.js') }}"></script>
     <script src="{{ asset('js/delete_image_ajax.js') }}"></script>
     <script src="{{ asset('js/image_fullscreen.js') }}"></script>
+    <script src="{{ asset('js/validation_comments.js') }}"></script>
 </x-layout>

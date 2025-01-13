@@ -4,9 +4,10 @@
         @foreach($errors->all() as $err)
             <p>{{ $err }}</p>
         @endforeach
-        <p>Údaje nie sú správne vyplnené</p>
     @endif
-    <form method="post" action="/register">
+    <div id="errorForm"></div>
+
+    <form method="post" action="/register" id="register-form">
     @csrf
         <label>
             Meno:<br>
@@ -29,4 +30,5 @@
 
     </form>
     <p>Po prihlásení je možné prispievať do zoznamu rastlín a taktiež mazať a upravovať ostatné príspevky. Účet je možné vytvoriť na vyžiadanie od administrátora stránky.</p>
+    <script src="{{ asset('js/validation_register.js') }}"></script>
 </x-layout>

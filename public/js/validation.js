@@ -1,6 +1,7 @@
 const chyba = document.getElementById("errorForm");
 
 document.getElementById("edit-create-form").onsubmit = function(event){
+
     event.preventDefault();
     chyba.innerHTML = "";
     let validny = true;
@@ -46,13 +47,22 @@ document.getElementById("edit-create-form").onsubmit = function(event){
         chyba.innerHTML += "Minimálna teplota sa môže pohybovať od -50 do 30 stupňov.<br>";
         minTeplota[0].style.borderColor = "red";
         validny = false;
-    } else if (minTeplota[0].value.length === 0 || maxTeplota[0].value.length === 0) {
-        chyba.innerHTML += "Minimálna a maximálna teplota musí byť vyplnená.<br>";
+    }
+    if (maxTeplota[0].value.length === 0) {
+        chyba.innerHTML += "Maximálna teplota musí byť vyplnená.<br>";
+        maxTeplota[0].style.borderColor = "red";
+        validny = false;
+    }
+    if (minTeplota[0].value.length === 0) {
+        chyba.innerHTML += "Minimálna teplota musí byť vyplnená.<br>";
+        minTeplota[0].style.borderColor = "red";
+        validny = false;
     }
 
     if (obsah[0].value.length < 3 || obsah[0].value.length > 2000) {
         chyba.innerHTML += "Obsah článku musí mať aspoň 3 znaky a najviac 2000 znakov.<br>";
         obsah[0].style.borderColor = "red";
+        obsah[0].style.borderWidth = "2px";
         validny = false;
     }
 

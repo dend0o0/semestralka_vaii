@@ -19,6 +19,16 @@ body a {
   text-decoration: none;
   color: #272b1f;
 }
+body div#errorForm {
+  color: darkred;
+}
+body a.button-normal {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 50%;
+  display: inline-block;
+  padding: 10px;
+}
 body .main-link-button {
   display: block;
   background-color: #AAB396;
@@ -78,6 +88,7 @@ body header nav ul .menu-item {
   text-align: center;
   height: 100%;
   padding: 28px 16px;
+  font-size: 16px;
 }
 body header nav ul .menu-item:hover {
   background-color: #86926a;
@@ -97,8 +108,10 @@ body header nav ul .menu-item:hover {
 body header nav ul .menu-item a {
   height: 100%;
   padding: 28px 16px;
+  font-size: 16px;
 }
 body header nav ul .menu-item input[type=submit] {
+  font-size: 16px;
   border: none;
   background: transparent;
 }
@@ -147,7 +160,8 @@ body main section#articles article {
 }
 body main section#articles article img {
   width: 100%;
-  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 body main table {
@@ -233,6 +247,11 @@ body main form .button-delete {
   border: 2px solid darkred;
   color: darkred;
 }
+body main #clanok-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 body main section#articleGallery div#articleGalleryContainer div.imageContainer {
   display: inline;
 }
@@ -259,6 +278,17 @@ body main section#articleGallery div#articleGalleryContainer .fullscreen img {
   max-height: 70%;
   height: auto;
   object-fit: contain;
+}
+body main section#articleGallery div#articleGalleryContainer .fullscreen #fullscreenButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 50%;
+}
+body main section#articleGallery div#articleGalleryContainer .fullscreen #fullscreenButtonContainer form {
+  display: flex;
+  justify-content: center;
 }
 body main section#articleGallery div#articleGalleryContainer .fullscreen p {
   color: whitesmoke;

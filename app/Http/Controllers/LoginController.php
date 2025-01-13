@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function create() {
-        return view('login');
+        return view('auth.login');
     }
 
     public function store() {
@@ -18,7 +18,11 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
 
-        Auth::attempt($validated);
+        if (!Auth::attempt($validated)) {
+            return back()->withErrors([
+                'login' => 'Nesprávny e-mail alebo heslo.',
+            ]);
+        }
 
         request()->session()->regenerate();
 
