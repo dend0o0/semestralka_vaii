@@ -34,6 +34,5 @@ lessc resources/css/style.less public/css/css.css
 </code></pre>
 
 <h2>Spustenie lokálneho servera</h2>
-<pre><code>php artisan serve
-   </code></pre>
+<pre><code>php artisan serve</code></pre>
 <p>Aplikácia bude dostupná na <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>.</p>
